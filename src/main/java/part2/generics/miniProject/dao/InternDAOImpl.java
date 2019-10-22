@@ -3,23 +3,24 @@ package part2.generics.miniProject.dao;
 import part2.generics.miniProject.db.MyDataBase;
 import part2.generics.miniProject.entity.BaseUser;
 import part2.generics.miniProject.entity.Employee;
+import part2.generics.miniProject.entity.Intern;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EmployeeDAOImpl<T extends BaseUser> implements EmployeeDAO<T> {
+public class InternDAOImpl<T extends BaseUser> implements InternDAO<T> {
 
     MyDataBase<T> myDataBase = new MyDataBase<>();
 
     @Override
-    public void saveEmployee(T t) {
+    public void saveIntern(T t) {
         myDataBase.addUser(t);
     }
 
     @Override
-    public List<T> getEmployee() {
+    public List<T> getInterns() {
         return myDataBase.getUsers().stream()
-                .filter(t -> t.getClass() == Employee.class)
+                .filter(t -> t.getClass() == Intern.class)
                 .collect(Collectors.toList());
     }
 
@@ -33,15 +34,15 @@ public class EmployeeDAOImpl<T extends BaseUser> implements EmployeeDAO<T> {
         return null;
     }
 
-    //get all Employees
+    //get all Interns
     @Override
     public List<T> getAll() {
         return myDataBase.getUsers().stream()
-                .filter(t -> t.getClass() == Employee.class)
+                .filter(t -> t.getClass() == Intern.class)
                 .collect(Collectors.toList());
     }
 
-    //display all Employees
+    //display all interns
     @Override
     public void displayAll() {
         List<T> allInterns = getAll();
@@ -54,4 +55,6 @@ public class EmployeeDAOImpl<T extends BaseUser> implements EmployeeDAO<T> {
     public void save(T t) {
         myDataBase.addUser(t);
     }
+
+
 }

@@ -5,6 +5,7 @@ import part2.generics.miniProject.entity.BaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserDAOImpl<T extends BaseUser> implements UserDAO<T> {
 
@@ -28,5 +29,27 @@ public class UserDAOImpl<T extends BaseUser> implements UserDAO<T> {
             }
         }
         return null;
+    }
+
+    //get all BaseUsers
+    @Override
+    public List<T> getAll() {
+        return myDataBase.getUsers().stream()
+                .filter(t -> t.getClass() == BaseUser.class)
+                .collect(Collectors.toList());
+    }
+
+    //display all BaseUsers
+    @Override
+    public void displayAll() {
+        List<T> allInterns = getAll();
+        for (T intern : allInterns) {
+            intern.toString();
+        }
+    }
+
+    @Override
+    public void save(T t) {
+        myDataBase.addUser(t);
     }
 }

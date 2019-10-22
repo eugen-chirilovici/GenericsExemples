@@ -1,5 +1,6 @@
 package part2.generics.miniProject.service;
 
+import part2.generics.miniProject.dao.BaseDAO;
 import part2.generics.miniProject.dao.UserDAO;
 import part2.generics.miniProject.dao.UserDAOImpl;
 import part2.generics.miniProject.entity.BaseUser;
@@ -13,7 +14,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUsers(List<BaseUser> listOfUsers) {
         for (BaseUser user : listOfUsers) {
-            userDAO.saveUser(user);
+            userDAO.save(user);
         }
     }
 

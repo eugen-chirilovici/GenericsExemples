@@ -4,10 +4,7 @@ package part2.generics.miniProject;
 import part2.generics.miniProject.entity.BaseUser;
 import part2.generics.miniProject.entity.Employee;
 import part2.generics.miniProject.entity.Intern;
-import part2.generics.miniProject.service.EmployeeService;
-import part2.generics.miniProject.service.EmployeeServiceImpl;
-import part2.generics.miniProject.service.UserService;
-import part2.generics.miniProject.service.UserServiceImpl;
+import part2.generics.miniProject.service.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +12,10 @@ import java.util.List;
 public class MainController {
 
     static UserService userService = new UserServiceImpl();
-
     static EmployeeService employeeService = new EmployeeServiceImpl();
-
+    static InternService internService = new InternServiceImpl();
     static List<BaseUser> listOfUsers = new ArrayList<>();
+
 
     static {
         Employee employee = new Employee();
@@ -28,10 +25,36 @@ public class MainController {
         employee.setBU("UK");
         employee.setDiscipline("Tester");
         listOfUsers.add(employee);
+
+        Intern intern = new Intern();
+        intern.setId(121212L);
+        intern.setFirstName("Ivan");
+        intern.setLastName("Kulinski");
+        intern.setAge(100L);
+        intern.setDiscipline("AM Java");
+
+        Intern intern2 = new Intern();
+        intern2.setId(34343434L);
+        intern2.setFirstName("Dan");
+        intern2.setLastName("Luncasu");
+        intern2.setAge(20L);
+        intern2.setDiscipline("AM Java");
+
+        Intern intern3 = new Intern();
+        intern3.setId(56565656L);
+        intern3.setFirstName("Constantin");
+        intern3.setLastName("Castravet");
+        intern3.setAge(18L);
+        intern3.setDiscipline("AM Java");
+
+        listOfUsers.add(intern);
+        listOfUsers.add(intern2);
+        listOfUsers.add(intern3);
     }
 
     public static void main(String[] args) {
         userService.saveUsers(listOfUsers);
+        internService.getInterns();
 
 //        System.out.println(userService.getListOfUsers());
 //
