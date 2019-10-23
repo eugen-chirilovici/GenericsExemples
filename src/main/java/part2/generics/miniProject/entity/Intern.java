@@ -1,6 +1,7 @@
 package part2.generics.miniProject.entity;
 
 public class Intern extends BaseUser {
+
     private Long age;
     private String discipline;
 

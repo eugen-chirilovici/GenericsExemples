@@ -5,5 +5,7 @@ public interface BaseDAO<T> {
 
     T getById(Long id);
 
+    T getByName(String val);
+
 }
 

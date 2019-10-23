@@ -32,4 +32,16 @@ public class EmployeeDAOImpl<T extends BaseUser> implements EmployeeDAO<T> {
         }
         return null;
     }
+
+    @Override
+    public T getByName(String val) {
+        for (BaseUser baseUser : myDataBase.getUsers()) {
+            if (baseUser.getFirstName().equals(val))
+                return (T) baseUser;
+        }
+
+        return null;
+    }
+
+
 }
